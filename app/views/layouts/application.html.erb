@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BlogApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield(:css_js) %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <ul class="nav-bar">
+        <%= image_tag 'fulllogo-small.svg', :class => 'logo' %>
+        <%= link_to "질문과답변", home_index_path, :class => 'nav-list' %>
+        <% if session[:current_user] = current_user %>
+          <%= link_to "마이페이지", edit_user_path(current_user), class: 'nav-list' %>
+          <%= link_to "로그아웃", destroy_user_session_path, class: 'nav-list', method: :delete %>
+          <% else %>
+          <%= link_to "회원가입", new_user_path, class: 'nav-list' %>
+          <%= link_to "로그인", user_session_path, class: 'nav-list' %>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

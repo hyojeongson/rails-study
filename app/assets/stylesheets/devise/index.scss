@@ -1,0 +1,56 @@
+.title {
+  color: #424242;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.field {
+  margin-bottom: 30px;
+  .label-title {
+    display: inline-block;
+    width: 130px;
+    font-weight: bold;
+  }
+  .label-sub-title {
+    font-size: 14px;
+    margin: 10px 0 10px 0;
+  }
+}
+.field-line {
+  font-weight: bold;
+  margin: 10px 0 30px 0;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid #F7F7F7;
+}
+.btn {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border-color: #35c5f0;
+  background-color: #35c5f0;
+  color: #ffffff;
+  font-size: 15px;
+  margin: 0 0 10px 0;
+}
+.sigin-in-q {
+  margin-top: 10px;
+  font-size: 14px;
+}
+.field-form {
+  margin: 0 15px 10px 0;
+  width: 300px;
+  border: 1px solid #dcdcdc;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #424242;
+  box-sizing: border-box;
+}
+
+.user-photo {
+  width: 100px;
+  height: 100px;
+  background-color: #35C5F0;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}

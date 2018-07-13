@@ -1,0 +1,26 @@
+<h2 class="title">회원정보수정</h2>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<div class="user-photo"></div>
+<%= link_to "비밀번호변경", password_edit_user_path, class: 'label-title' %>
+<%= form_for(@user) do |f| %>
+  <div class="field">
+    <%= f.label :별명, :class => 'label-title' %>
+    <%= f.text_field :nickname, :class => 'field-form' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :이메일, :class => 'label-title' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => 'field-form' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :프로필이미지, :class => 'label-title' %>
+    <%= f.file_field :photo, :class => 'field-form' %>
+  </div>
+  <div class="actions">
+  <%= f.submit "수정하기", class: 'btn' %>
+</div>
+<% end %>
