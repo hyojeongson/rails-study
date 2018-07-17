@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
   <% @posts.each do |post| %>
     <div class="qna-list-content">
       <div class="qna-thumb-image"><%= image_tag(post.image.to_s) %></div>

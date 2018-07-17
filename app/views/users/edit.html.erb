@@ -2,9 +2,12 @@
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
+<% if @user.image.url %>
+  <div><%= image_tag(@user.image.to_s, id: 'imagePreview', class: 'user-photo') %></div>
+  <% else %>
+  <div class="user-photo" id="imagePreview"></div>
+<% end %>
 
-<div class="user-photo"></div>
-<%= link_to "비밀번호변경", password_edit_user_path, class: 'label-title' %>
 <%= form_for(@user) do |f| %>
   <div class="field">
     <%= f.label :별명, :class => 'label-title' %>
@@ -18,8 +21,13 @@
 
   <div class="field">
     <%= f.label :프로필이미지, :class => 'label-title' %>
-    <%= f.file_field :photo, :class => 'field-form' %>
+    <%= f.file_field :image, :class => 'field-form', id: "uploadImage" %>
   </div>
+  <div class="field">
+    <%= f.label :비밀번호변경, :class => 'label-title' %>
+    <%= link_to "비밀번호변경하기", password_edit_user_path, class: 'label-title' %>
+  </div>
+
   <div class="actions">
   <%= f.submit "수정하기", class: 'btn' %>
 </div>

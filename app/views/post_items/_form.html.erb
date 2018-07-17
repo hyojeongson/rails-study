@@ -1,0 +1,18 @@
+<% content_for :js_css do %>
+  <%= javascript_include_tag 'application' %>
+<% end %>
+<%= form_with(model: post_item, local: true) do |form| %>
+  <%= form.file_field :image, id: "uploadImage" %>
+<div class="post-item-title-warpper">
+  <%= form.text_field :title, placeholder: "제목이 필요하다면 입력해주세요. (공백시 나타나지 않습니다.)", class: "qna-show-title"  %>
+</div>
+<div class="post-item-content-warpper">
+  <div id="imagePreview"></div>
+  <%# if @post_item.image.url = nil %>
+<!--    <div id="imagePreview"></div>-->
+  <%# else %>
+<!--    <div><%#= image_tag(@post_item.image.to_s, id: 'imagePreview') %></div>-->
+  <%# end %>
+  <%= form.text_area :description, placeholder: "이미지에 대한 설명을 입력해주세요.", class: "post-item-content-text" %>
+</div>
+<% end %>

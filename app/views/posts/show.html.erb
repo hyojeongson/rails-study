@@ -1,9 +1,14 @@
-<p id="notice"><%= notice %></p>
-<p class="qna-show-title">질문과 답변</p>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<p class="qna-show-title-warpper">질문과 답변</p>
 <p class="qna-title"><%= @post.title %></p>
-<div class="qna-show-content">
+<div class="qna-show-content-warpper">
   <%= image_tag(@post.image.to_s) %>
-  <%= @post.description %></div>
+  <div class="qna-show-content-description">
+    <%= @post.description %>
+  </div>
+</div>
 <div class="qna-show-btn">
   <%= link_to '수정하기', edit_post_path(@post) %>
   <%= link_to '목록보기', home_index_path %>

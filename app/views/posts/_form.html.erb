@@ -14,14 +14,18 @@
     </div>
   <% end %>
 
-  <div class="qna-show-title">
-    <%= form.text_field :title %>
+  <div class="qna-show-cover-warpper" id="imagePreview">
+    <%= image_tag 'ic-camera.svg', class: 'qna-show-cover-icon' %>
+    <%= form.file_field :image, id: "uploadImage", class: "qnq-show-cover-file-field" %>
+  </div>
+  <div class="qna-show-title-warpper">
+    <%= form.text_field :title, placeholder: "제목을 입력해주세요.", class: "qna-show-title"  %>
+  </div>
+  <div class="qna-show-content-warpper">
+    <%= form.text_area :description, placeholder: "이미지에 대한 설명을 입력해주세요.", class: "qna-show-content-text" %>
   </div>
 
-  <div class="qna-show-content">
-    <%= form.file_field :image %>
-    <%= form.text_area :description %>
-  </div>
+  <%= render 'post_items/form', post_item: @post_item %>
   <div class="actions">
     <%= form.submit %>
   </div>
