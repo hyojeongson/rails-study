@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-    before_action :set_post_item, only: [:show, :edit, :update, :destroy]
     before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -27,8 +26,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
     respond_to do |format|
+
       if @post.save
         format.html { redirect_to @post, notice: '질문이 등록되었습니다.' }
         format.json { render :show, status: :created, location: @post }
@@ -72,7 +71,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:title, :description, :image)
+        params.require(:post).permit(:title, :description, :image, post_items_attributes: [:title, :imgae, :description])
     end
 
     def post_item_params
