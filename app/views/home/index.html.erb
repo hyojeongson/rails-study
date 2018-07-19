@@ -2,24 +2,24 @@
   <%= stylesheet_link_tag 'home/index' %>
 <% end %>
 <div>
-  <div class="qna-header">
-    <div class="qna-title">질문과 답변</div>
+  <div class="post-header">
+    <div class="post-title">온라인 집들이</div>
     <div class="qnq-sub-title">오늘의집 인테리어 고수들과 전문가들에게 조언을 받으세요</div>
     <div class="qnq-search">
       <%= form_tag({ action: :index }, { method: :get }) do %>
         <div class="qnq-search">
-          <div class="qna-search-input">
+          <div class="post-search-input">
             <%= text_field_tag :search, nil, placeholder: '궁금한 것을 검색해보세요.' %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-  <div class="qna-content">
-    <div class="qna-new-btn">
-      <%= link_to "질문하기", new_post_path %>
+  <div class="post-content">
+    <div class="post-new-btn">
+      <%= link_to "글쓰기", new_post_path %>
     </div>
-    <div class="qna-new-btn">
+    <div class="post-new-btn">
       <%= link_to "내가 쓴 글 보기", new_post_path %>
     </div>
     <%= render 'posts/index' %>

@@ -1,4 +1,9 @@
-.qna-new-btn {
+.post-warpper {
+  width: 750px;
+  margin: 0 auto;
+  text-align: center;
+}
+.post-new-btn {
   display: inline-block;
   border-radius: 2px;
   padding: 10px 30px 10px 30px;
@@ -7,29 +12,29 @@
   text-align: center;
   cursor: pointer;
 }
-.qna-list-title {
+.post-list-title {
   font-size: 22px;
   font-weight: bold;
 }
-.qna-list-content {
+.post-list-content {
   display: flex;
   margin-top: 30px;
   padding: 30px 0;
   border-top: 1px solid #EEE;
 }
-.qna-thumb-image {
+.post-thumb-image {
   margin-right: 20px;
   img{
     width: 150px;
     height: 150px;
   }
 }
-.qna-list-description {
+.post-list-description {
   margin-top: 10px;
   font-size: 14px;
   color: #424242;
 }
-.qna-list-btn {
+.post-list-btn {
   margin-top: 10px;
   text-align: right;
   a {
@@ -40,13 +45,39 @@
   }
 }
 //post-edit
-.qna-show-title-warpper {
+.post-show-cover-warpper {
+  margin-bottom: 50px;
+  .post-show-cover {
+    height: 430px;
+    border-radius: 10px;
+    background: #dcdcdc;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    .post-show-cover-icon {
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      top: 45%;
+      left: 0;
+      right: 0;
+    }
+    .qnq-show-cover-file-field {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+}
+
+.post-show-title-warpper {
   margin-top: 20px;
   margin-bottom: 20px;
   color: #35C5F0;
   font-weight: bold;
   text-decoration: underline;
-  .qna-show-title {
+  .post-show-title {
     width: 590px;
     height: 39px;
     font-size: 20px;
@@ -54,42 +85,29 @@
     border: none;
     border-bottom: 2px solid #dcdcdc;
   }
-}
-.qna-show-cover-warpper {
-  width: 600px;
-  height: 330px;
-  border-radius: 10px;
-  background: #dcdcdc;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  .qna-show-cover-icon {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    top: 45%;
-    left: 0;
-    right: 0;
-  }
-  .qnq-show-cover-file-field {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+  input:focus {
+    outline: none;
   }
 }
-.qna-show-content-warpper {
+.post-show-content-warpper {
+  width: 750px;
   margin: 0 auto;
   margin-top: 20px;
-  .qna-show-content-text {
-    width: 100%;
+  text-align: center;
+  .post-show-content-text {
+    padding: 20px;
+    width: 550px;
+    height: 200px;
     white-space:normal;
-    height: 100px;
     font-size: 15px;
-    border: none;
+    border: 1px solid #dcdcdc;
+    resize: none;
+  }
+  textarea:focus {
+    outline: none;
   }
 
-  .qna-show-content-description {
+  .post-show-content-description {
     color: #424242;
     text-align: center;
     margin-top: 20px;
@@ -97,7 +115,15 @@
   }
 }
 
-.qna-show-btn {
+.post-new-btn {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #F7F7F7;
+  font-size: 14px;
+}
+
+.post-show-btn {
   text-align: center;
   margin-top: 30px;
   margin-bottom: 30px;

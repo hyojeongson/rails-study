@@ -40,13 +40,13 @@
     vertical-align: middle;
   }
 }
-.qna-header {
+.post-header {
   background-color: #F3F3F3;
   width: 100%;
   height: 225px;
   text-align: center;
 }
-.qna-search-input {
+.post-search-input {
   margin-top: 20px;
   display: inline-block;
   input {
@@ -55,18 +55,19 @@
     padding-left: 20px;
   }
 }
-.qna-title {
+.post-title {
   padding: 50px 0 10px 0;
   font-size: 32px;
   font-weight: bold;
+  text-align: center;
 }
-.qna-sub-title {
+.post-sub-title {
   font-size: 12px;
 }
-.qna-content {
+.post-content {
   margin-top: 30px;
 }
-.qna-new-btn {
+.post-new-btn {
   display: inline-block;
   border-radius: 2px;
   padding: 10px 30px 10px 30px;

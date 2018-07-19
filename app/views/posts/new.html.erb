@@ -1,8 +1,9 @@
-<h1 class="title">질문하기</h1>
-<p class="qna-sub-title"></p>
-
-<%= render 'form', post: @post %>
-
-<div class="qna-show-btn">
-  <%= link_to '뒤로가기', home_index_path %>
+<h1 class="title"></h1>
+<p class="post-sub-title"></p>
+<div class="post-warpper">
+  <%= render 'form', post: @post %>
 </div>
+
+<!--<div class="post-show-btn">-->
+  <%#= link_to '뒤로가기', home_index_path %>
+<!--</div>-->

@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+    before_action :set_post_item, only: [:show, :edit, :update, :destroy]
+    before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -10,6 +11,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+
   end
 
   # GET /posts/new
@@ -62,13 +64,18 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+        @post = Post.find(params[:id]) if params[:id].present?
+    end
+    def set_post_item
+        @post_item = PostItem.find(params[:post_id]) if params[:post_id].present?
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :description, :image)
+        params.require(:post).permit(:title, :description, :image)
+    end
+
+    def post_item_params
+        params.require(:post_item).permit(:title, :description, :image, :post_id)
     end
 end

@@ -1,15 +1,15 @@
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
-<p class="qna-show-title-warpper">질문과 답변</p>
-<p class="qna-title"><%= @post.title %></p>
-<div class="qna-show-content-warpper">
+<p class="post-show-title-warpper">질문과 답변</p>
+<p class="post-title"><%= @post.title %></p>
+<div class="post-show-content-warpper">
   <%= image_tag(@post.image.to_s) %>
-  <div class="qna-show-content-description">
+  <div class="post-show-content-description">
     <%= @post.description %>
   </div>
 </div>
-<div class="qna-show-btn">
+<div class="post-show-btn">
   <%= link_to '수정하기', edit_post_path(@post) %>
   <%= link_to '목록보기', home_index_path %>
 </div>

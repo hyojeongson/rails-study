@@ -4,7 +4,7 @@
 <%= form_with(model: post_item, local: true) do |form| %>
   <%= form.file_field :image, id: "uploadImage" %>
 <div class="post-item-title-warpper">
-  <%= form.text_field :title, placeholder: "제목이 필요하다면 입력해주세요. (공백시 나타나지 않습니다.)", class: "qna-show-title"  %>
+  <%= form.text_field :title, placeholder: "제목이 필요하다면 입력해주세요. (공백시 나타나지 않습니다.)", class: "post-item-title"  %>
 </div>
 <div class="post-item-content-warpper">
   <div id="imagePreview"></div>

@@ -2,12 +2,12 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
   <% @posts.each do |post| %>
-    <div class="qna-list-content">
-      <div class="qna-thumb-image"><%= image_tag(post.image.to_s) %></div>
+    <div class="post-list-content">
+      <div class="post-thumb-image"><%= image_tag(post.image.to_s) %></div>
       <div>
-        <div class="qna-list-title"><%= post.title %></div>
-        <div class="qna-list-description"><%= post.description %></div>
-        <div class="qna-list-btn">
+        <div class="post-list-title"><%= post.title %></div>
+        <div class="post-list-description"><%= post.description %></div>
+        <div class="post-list-btn">
           <%= link_to '보기', post %>
           <%= link_to '수정', edit_post_path(post) %>
           <%= link_to '삭제', post, method: :delete, data: { confirm: '삭제하겠습니까?' } %>
