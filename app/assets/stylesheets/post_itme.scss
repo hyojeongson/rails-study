@@ -20,21 +20,23 @@
   }
 }
 .post-item-content-warpper {
-  #postItemImagePreview {
+  .image-preview {
+    background-color: rgba(0, 0, 0, 0.04);
     margin: 0 auto;
     width: 590px;
     height: 500px;
+    background-size: cover;
   }
-  .post-item-content-text {
-    margin-top: 30px;
-    width: 590px;
-    white-space:normal;
-    height: 100px;
-    font-size: 15px;
-    border: none;
-    resize: none;
-  }
-  textarea:focus {
-    outline: none;
-  }
+}
+.post-item-content-text {
+  margin-top: 30px;
+  width: 590px;
+  white-space:normal;
+  height: 100px;
+  font-size: 15px;
+  border: none;
+  resize: none;
+}
+textarea:focus {
+  outline: none;
 }

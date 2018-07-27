@@ -1,6 +1,4 @@
-<% content_for :js_css do %>
-  <%= javascript_include_tag 'application' %>
-<% end %>
+<% content_for :js_css do %><%= javascript_include_tag 'application' %><% end %>
 <% post.post_items.build %>
 <%= form_for @post do |post_form| %>
   <% if post.errors.any? %>
@@ -16,9 +14,10 @@
 
   <div class="post-form-cover-warpper">
     <% if @post.image.url %>
-      <div class="post-form-cover" id="coverImagePreview" style="">
-        <%= image_tag(@post.image.to_s, id: 'coverImagePreview', class: 'post-show-cover') %>
-        <%= post_form.file_field :image, id: "coverUploadImage", class: "qnq-show-cover-file-field" %>
+      <div class="post-form-cover" id="coverImagePreview">
+        <%= image_tag 'ic-camera.svg', class: 'post-form-cover-icon' %>
+        <%= image_tag(@post.image.to_s, id: 'is-cover', class: 'post-form-cover') %>
+        <%= post_form.file_field :image, id: "coverUploadImage", class: "post-form-cover-file-field" %>
       </div>
     <% else %>
       <div class="post-form-cover" id="coverImagePreview">
@@ -34,18 +33,31 @@
     </div>
   </div>
 
-  <%= post_form.fields_for :post_items do |post_item_fields| %>
-    <div class="post-item-warpper">
-      <%= post_item_fields.file_field :image, id: "uploadPostItemImage" %>
-      <div class="post-item-title-warpper">
-        <%= post_item_fields.text_field :title, placeholder: "제목이 필요하다면 입력해주세요. (공백시 나타나지 않습니다.)", class: "post-item-title"  %>
+  <% @post.post_items.each_with_index do |post_item| %>
+    <%= post_form.fields_for :post_items, post_item do |post_item_fields| %>
+      <div class="post-item">
+        <% unless post_item.id? %>
+          <div class="remove-post-item"></div>
+        <% end %>
+        <% unless post_item.id.nil? %>
+          <%= link_to "삭제하기", post_post_itme_path(post_id: @post.id, id: post_item.id), method: "delete", data: {confirm: '선택한 아이템을 삭제하시겠습니까?'}, class: "post_item_delete" %>
+        <% end %>
+          <div class="add-post-item"><div class="icon"></div></div>
+          <div class="post-item-warpper">
+            <div class="post-item-title-warpper">
+              <%= post_item_fields.text_field :title, placeholder: "제목이 필요하다면 입력해주세요. (공백시 나타나지 않습니다.)", class: "post-item-title"  %>
+            </div>
+            <div class="post-item-content-warpper">
+              <div class="image-preview">
+                <%= post_item_fields.file_field :image, class: "uploadPostItemImage" %>
+              </div>
+            </div>
+            <%= post_item_fields.text_area :description, placeholder: "이미지에 대한 설명을 입력해주세요.", class: "post-item-content-text" %>
+          </div>
       </div>
-      <div class="post-item-content-warpper">
-        <div id="postItemImagePreview"></div>
-        <%= post_item_fields.text_area :description, placeholder: "이미지에 대한 설명을 입력해주세요.", class: "post-item-content-text" %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
+
   <div class="actions">
     <%= post_form.submit '발행하기', class: "post-new-btn" %>
   </div>

@@ -1,32 +1,18 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, or any plugin's
-// vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
 
 // user image 이미지파일 업로드 미리보기
 $(function() {
-  $("#uploadImage").on("change", function()
+  $("#uploadImage").unbind("change").on("change", function()
   {
     var files = !!this.files ? this.files : [];
-    if (!files.length || !window.FileReader) return;
     if (/^image/.test( files[0].type)){
       var reader = new FileReader();
-      reader.readAsDataURL(files[0]);
 
-      reader.onloadend = function(){
-        $("#imagePreview").css("background-image", "url("+this.result+")");
+      reader.readAsDataURL(files[0]);
+      reader.onloadend = function(e){
+        $("#imagePreview").attr("src", e.target.result);
       }
     }
   });
@@ -36,6 +22,10 @@ $(function() {
 $(function() {
   $("#coverUploadImage").on("change", function()
   {
+    var isCover = $('#is-cover').length;
+    if (isCover > 0) {
+     $('#is-cover').remove()
+   }
     var files = !!this.files ? this.files : [];
     if (!files.length || !window.FileReader) return;
     if (/^image/.test( files[0].type)){
@@ -49,24 +39,50 @@ $(function() {
   });
 });
 
+// post-item DOM 추가하기
+$(function () {
+  $('.add-post-item').on('click', function () {
+    var newId = $('.post-item').length;
+    var postItem = $('.post-item:last').eq(0).clone(true);
+    postItem.find('[name^="post[post_items_attributes]"]').each(function () {
+      $(this).attr('name', $(this).attr('name').replace(/\d+/, newId));
+    });
+    postItem.insertAfter($('.post-item').last());
+  })
+});
+
+// post-item DOM 삭제하기
+$(function () {
+  $('.remove-post-item').unbind().on('click', function () {
+    var removePostItem = $(this).parent();
+    removePostItem.remove();
+    $('.post-item').each(function (index) {
+      $(this).find('[name^="post[post_items_attributes]"]').each(function () {
+        $(this).attr('name', $(this).attr('name').replace(/\d+/, index))
+      })
+    })
+  })
+});
+
 // post-item 이미지파일 업로드 미리보기
 $(function() {
-  $("#uploadPostItemImage").on("change", function()
+  $(".uploadPostItemImage").unbind().on("change", function()
   {
+    var self = this;
     var files = !!this.files ? this.files : [];
-    if (!files.length || !window.FileReader) return;
     if (/^image/.test( files[0].type)){
       var reader = new FileReader();
       reader.readAsDataURL(files[0]);
 
-      reader.onloadend = function(){
-        $("#postItemImagePreview").css("background-image", "url("+this.result+")");
+      reader.onload = function(e){
+        $(self).parents('.post-item').find('.image-preview')
+          .css("background-image", "url("+e.target.result+")");
       }
     }
   });
 });
 
-// notification popup
+// notification 알림
 $(function() {
   $(".notice").delay(2000).fadeOut("slow");
 });

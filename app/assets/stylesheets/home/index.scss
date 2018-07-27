@@ -1,5 +1,7 @@
 @import '../reset.scss';
 .content {
+  width: 100%;
+  max-width: 1180px;
   margin: 0 auto;
 }
 .notice {
@@ -19,7 +21,6 @@
   margin-right: auto;
 }
 .nav-bar {
-  width: 980px;
   border-bottom: 1px solid #dcdcdc;
   padding: 2%;
   font-size: 15px;
@@ -63,7 +64,9 @@
 }
 .post-show-item-title {
   margin-top: 100px;
-  font-size: 20px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
   text-align: left;
   margin-left: 20px;
   padding-left: 10px;

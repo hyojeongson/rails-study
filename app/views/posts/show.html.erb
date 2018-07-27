@@ -3,26 +3,26 @@
 <% end %>
 
 <div class="post-warpper">
-  <p class="post-show-title-warpper">온라인 집들이</p>
-  <p class="post-title"><%= @post.title %></p>
+  <p class="post-show-title"><%= @post.title %></p>
   <div class="post-show-content-warpper">
     <%= image_tag(@post.image.to_s) %>
     <div class="post-show-content-description">
       <%= @post.description %>
     </div>
-    <div class="post-item-warpper">
-      <div class="post-show-item-title">
-        <%= @post.post_items[0].title %>
-      </div>
-      <div class="post-item-content-warpper">
+
+    <% @post.post_items.each do |post_item| %>
+      <div class="post-show-item-warpper">
+        <div class="post-show-item-title">
+          <%= post_item.title %>
+        </div>
         <div id="postItemImagePreview">
-          <%= image_tag(@post.post_items[0].image.to_s) %>
+          <%= image_tag(post_item.image.to_s) %>
         </div>
         <div class="post-show-content-description">
-          <%= @post.post_items[0].description %>
+          <%= post_item.description %>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
   <div class="post-show-btn">
     <%= link_to '수정하기', edit_post_path(@post) %>

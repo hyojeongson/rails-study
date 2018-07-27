@@ -1,8 +1,95 @@
+//post_index list
+.post-list-item {
+  width: 1179px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.post-list-content {
+  width: 393px;
+  margin-top: 30px;
+  cursor: pointer;
+  .post-thumb-image {
+    margin-top: 10px;
+    text-align: center;
+    img{
+      width: 373px;
+      height: 373px;
+    }
+  }
+  .post-list-title {
+    margin: 20px 0 0 10px;
+    font-size: 15px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+  }
+  .post-list-user-photo {
+    background-image: url("/assets/ic_review_event.jpg");
+    margin: -5px 0 0 10px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    background-size: cover;
+    margin-right: 10px;
+    background-position: center;
+    background-color: #35C5F0;
+  }
+  .post-list-user-name {
+    vertical-align: top;
+  }
+  .post-list-description {
+    margin: 20px 0 0 10px;
+    width: 373px;
+    height: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #424242;
+    line-height: 18px;
+  }
+  .post-list-btn {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+    a {
+      font-size: 14px;
+      color: #35C5F0;
+      font-weight: bold;
+      margin-right: 20px;
+    }
+  }
+}
+.post-list-content:hover{
+  background-color: #eeeeee;
+  border-radius: 10px;
+}
+
+//post show
 .post-warpper {
   width: 750px;
   margin: 0 auto;
   text-align: center;
+  .post-show-item-warpper {
+    margin-bottom: 100px;
+  }
 }
+
+.post-show-title {
+  padding: 50px 0 30px 0;
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+.post-show-content-description {
+  margin-top: 30px;
+  line-height: 20px;
+}
+
 .post-new-btn {
   display: inline-block;
   border-radius: 2px;
@@ -12,40 +99,14 @@
   text-align: center;
   cursor: pointer;
 }
-.post-list-title {
-  font-size: 22px;
+.post-show-btn {
+  margin-top: 50px;
+  margin-bottom: 50px;
   font-weight: bold;
-}
-.post-list-content {
-  display: flex;
-  margin-top: 30px;
-  padding: 30px 0;
-  border-top: 1px solid #EEE;
-}
-.post-thumb-image {
-  margin-right: 20px;
-  img{
-    width: 150px;
-    height: 150px;
-  }
-}
-.post-list-description {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #424242;
-}
-.post-list-btn {
-  margin-top: 10px;
-  text-align: right;
-  a {
-    font-size: 14px;
-    color: #35C5F0;
-    font-weight: bold;
-    margin-right: 20px;
-  }
 }
 //post-_form
 .post-form-cover-warpper {
+  position: relative;
   margin-bottom: 50px;
   .post-form-cover {
     height: 430px;
@@ -63,6 +124,9 @@
       right: 0;
     }
     .post-form-cover-file-field {
+      position: absolute;
+      top: 0;
+      left: 0;
       opacity: 0;
       width: 100%;
       height: 100%;
@@ -111,7 +175,7 @@
     color: #424242;
     text-align: center;
     margin-top: 20px;
-    line-height: 20px;
+    line-height: 22px;
   }
 }
 
@@ -132,5 +196,71 @@
     color: #35C5F0;
     font-weight: bold;
     margin-right: 20px;
+  }
+}
+
+.add-post-item .icon {
+  width: 32px;
+  height: 30px;
+  background-image: url("/assets/icon_map/icon-editor@2x.png");
+  background-size: 400px;
+  background-position: top -74px left 0;
+  cursor: pointer;
+}
+.post_item_delete {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  border-radius: 50px;
+  line-height: 30px;
+  background-color: rgb(255, 119, 119);
+  color: #ffffff;
+
+}
+.remove-post-item {
+  width: 32px;
+  height: 30px;
+  background-image: url("/assets/icon_map/icon-editor@2x.png");
+  background-size: 400px;
+  background-position: top -74px left -60px;
+  cursor: pointer;
+}
+.add-post-item .uploadPostItemImage {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.post-item-content-warpper {
+  position: relative;
+}
+.post-item-content-warpper .uploadPostItemImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
+}
+
+// edit
+.post-warpper {
+  position: relative;
+  .post-form-cover-warpper {
+    .post-form-cover-icon {
+      position: absolute;
+    }
+   .post-form-cover {
+     width: 100%;
+     background-size: cover;
+   }
   }
 }
