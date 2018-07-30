@@ -44,8 +44,10 @@ $(function () {
   $('.add-post-item').on('click', function () {
     var newId = $('.post-item').length;
     var postItem = $('.post-item:last').eq(0).clone(true);
+    postItem.find('.image-preview').css('background-image', 'none');
     postItem.find('[name^="post[post_items_attributes]"]').each(function () {
       $(this).attr('name', $(this).attr('name').replace(/\d+/, newId));
+      $(this).val("");
     });
     postItem.insertAfter($('.post-item').last());
   })
