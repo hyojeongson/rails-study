@@ -52,12 +52,6 @@ class PostsController < ApplicationController
         end
     end
 
-    def post_item_destroy
-        respond_to do |format|
-            format.html {redirect_to home_index_path, notice: '포스트아이템이이 삭제되었습니다.'}
-            format.json {head :no_content}
-            end
-    end
     # DELETE /posts/1
     # DELETE /posts/1.json
     def destroy
@@ -75,11 +69,10 @@ class PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:title, :description, :image, post_items_attributes: [:post_id, :title, :image, :description, :_destroy])
+        params.require(:post).permit(:title, :description, :image, post_items_attributes: [:id, :post_id, :title, :image, :description, :_destroy, :position])
     end
 
     def post_update_params
-        params.require(:post).permit(:title, :description, :image, post_items_attributes: [:post_id, :title, :image, :description, :_destroy])
+        params.require(:post).permit(:title, :description, :image, post_items_attributes: [:id, :post_id, :title, :image, :description, :_destroy, :position])
     end
-
 end

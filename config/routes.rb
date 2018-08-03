@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     resources :posts do
-        resources :post_itmes, only: [:destroy]
+        resources :post_itmes, only: [:destroy, :update ]
     end
     get 'home/index'
     # devise_for :users

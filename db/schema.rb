@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_17_023952) do
+ActiveRecord::Schema.define(version: 2018_08_03_040217) do
 
   create_table "post_items", force: :cascade do |t|
     t.string "description"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_07_17_023952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "post_id"
+    t.integer "position"
     t.index ["post_id"], name: "index_post_items_on_post_id"
   end
 

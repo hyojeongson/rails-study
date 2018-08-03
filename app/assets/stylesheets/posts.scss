@@ -3,6 +3,7 @@
   width: 1179px;
   display: flex;
   flex-wrap: wrap;
+  background-color: #ffffff;
 }
 .post-list-content {
   width: 393px;
@@ -103,6 +104,16 @@
   margin-top: 50px;
   margin-bottom: 50px;
   font-weight: bold;
+  a {
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #35C5F0;
+    font-size: 12px;
+    margin-right: 10px;
+    color: #ffffff;
+  }
 }
 //post-_form
 .post-form-cover-warpper {
@@ -263,4 +274,7 @@
      background-size: cover;
    }
   }
+}
+.hidden_post_item {
+  display: none;
 }

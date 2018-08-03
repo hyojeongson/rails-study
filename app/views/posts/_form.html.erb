@@ -32,32 +32,25 @@
       <%= post_form.text_area :description, placeholder: "인테리어를 하시면서 경험한 일을 소개해주세요.", class: "post-form-content-text" %>
     </div>
   </div>
-
-  <% @post.post_items.each_with_index do |post_item| %>
-    <%= post_form.fields_for :post_items, post_item do |post_item_fields| %>
+  <div id="sortable">
+    <%= post_form.fields_for :post_items do |post_item_fields| %>
       <div class="post-item">
-        <% unless post_item.id? %>
-          <div class="remove-post-item"></div>
-        <% end %>
-        <% unless post_item.id.nil? %>
-          <%= link_to "삭제하기", post_post_itme_path(post_id: @post.id, id: post_item.id), method: "delete", data: {confirm: '선택한 아이템을 삭제하시겠습니까?'}, class: "post_item_delete" %>
-        <% end %>
-          <div class="add-post-item"><div class="icon"></div></div>
+        <div class="add-post-item"><div class="icon"></div></div>
+          <%= post_item_fields.check_box :_destroy, class: "post_item_delete" %>
+          <%= post_item_fields.label :_destroy, "삭제하기", class: "post_item_delete" %>
           <div class="post-item-warpper">
             <div class="post-item-title-warpper">
               <%= post_item_fields.text_field :title, placeholder: "제목이 필요하다면 입력해주세요. (공백시 나타나지 않습니다.)", class: "post-item-title"  %>
             </div>
             <div class="post-item-content-warpper">
-              <div class="image-preview">
-                <%= post_item_fields.file_field :image, class: "uploadPostItemImage" %>
-              </div>
+              <%= image_tag(post_item_fields.object.image.to_s, id: 'is-cover', class: 'image-preview') %>
+              <%= post_item_fields.file_field :image, class: "uploadPostItemImage" %>
             </div>
             <%= post_item_fields.text_area :description, placeholder: "이미지에 대한 설명을 입력해주세요.", class: "post-item-content-text" %>
           </div>
       </div>
     <% end %>
-  <% end %>
-
+  </div>
   <div class="actions">
     <%= post_form.submit '발행하기', class: "post-new-btn" %>
   </div>

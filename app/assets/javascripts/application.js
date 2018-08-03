@@ -1,6 +1,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
+//= require jquery-ui
 
 // user image 이미지파일 업로드 미리보기
 $(function() {
@@ -41,6 +42,10 @@ $(function() {
 
 // post-item DOM 추가하기
 $(function () {
+  var postItemCount = $('.post-item').length;
+  if (postItemCount > 1) {
+    $('.post-item:last').eq(0).remove();
+  }
   $('.add-post-item').on('click', function () {
     var newId = $('.post-item').length;
     var postItem = $('.post-item:last').eq(0).clone(true);
@@ -55,9 +60,9 @@ $(function () {
 
 // post-item DOM 삭제하기
 $(function () {
-  $('.remove-post-item').unbind().on('click', function () {
+  $('.post_item_delete').unbind().on('click', function (e) {
     var removePostItem = $(this).parent();
-    removePostItem.remove();
+    removePostItem.toggleClass('hidden_post_item');
     $('.post-item').each(function (index) {
       $(this).find('[name^="post[post_items_attributes]"]').each(function () {
         $(this).attr('name', $(this).attr('name').replace(/\d+/, index))
@@ -78,10 +83,25 @@ $(function() {
 
       reader.onload = function(e){
         $(self).parents('.post-item').find('.image-preview')
-          .css("background-image", "url("+e.target.result+")");
+          .attr("src", e.target.result);
       }
     }
   });
+});
+
+// 위치 바꾸기
+$(function() {
+  $( "#sortable" ).sortable({
+    revert: true,
+  });
+  $("#sortable").on("sortstop", function (event, ui) {
+    $('.post-item').each(function (index) {
+      $(this).find('[name^="post[post_items_attributes]"]').each(function () {
+        $(this).attr('name', $(this).attr('name').replace(/\d+/, index))
+      })
+    })
+  });
+  $( "#sortable" ).disableSelection();
 });
 
 // notification 알림
