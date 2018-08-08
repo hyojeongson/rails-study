@@ -46,28 +46,38 @@ $(function () {
   if (postItemCount > 1) {
     $('.post-item:last').eq(0).remove();
   }
+
   $('.add-post-item').on('click', function () {
     var newId = $('.post-item').length;
     var postItem = $('.post-item:last').eq(0).clone(true);
-    postItem.find('.image-preview').css('background-image', 'none');
+    var itemPosition = postItem.find('.post_item_position').attr('value');
+    var setPosition = Number(itemPosition)+1;
+    console.log(itemPosition,setPosition)
+    postItem.removeClass('hidden_post_item');
+    postItem.find('.image-preview')
+            .attr('src', '/assets/photo.png');
     postItem.find('[name^="post[post_items_attributes]"]').each(function () {
       $(this).attr('name', $(this).attr('name').replace(/\d+/, newId));
       $(this).val("");
     });
+    postItem.find('.post_item_delete').prop('checked', false);
+    postItem.find('.post_item_position').val(setPosition);
     postItem.insertAfter($('.post-item').last());
   })
 });
 
 // post-item DOM 삭제하기
 $(function () {
-  $('.post_item_delete').unbind().on('click', function (e) {
+  $('.post_item_delete').unbind().on('click', function () {
     var removePostItem = $(this).parent();
-    removePostItem.toggleClass('hidden_post_item');
+    removePostItem.addClass('hidden_post_item');
     $('.post-item').each(function (index) {
+      $(this).find('.post_item_position').val(index)
       $(this).find('[name^="post[post_items_attributes]"]').each(function () {
         $(this).attr('name', $(this).attr('name').replace(/\d+/, index))
       })
     })
+    removePostItem.find('.post_item_position').val('');
   })
 });
 
@@ -92,13 +102,10 @@ $(function() {
 // 위치 바꾸기
 $(function() {
   $( "#sortable" ).sortable({
-    revert: true,
   });
   $("#sortable").on("sortstop", function (event, ui) {
-    $('.post-item').each(function (index) {
-      $(this).find('[name^="post[post_items_attributes]"]').each(function () {
-        $(this).attr('name', $(this).attr('name').replace(/\d+/, index))
-      })
+    $('.post-item:not(.hidden_post_item)').each(function (index) {
+      $(this).find('.post_item_position').val(index)
     })
   });
   $( "#sortable" ).disableSelection();
