@@ -43,8 +43,9 @@ $(function() {
 // post-item DOM 추가하기
 $(function () {
   var postItemCount = $('.post-item').length;
+  var emptyItemForm = $('.post-item').eq(0).clone(true);
   if (postItemCount > 1) {
-    $('.post-item:last').eq(0).remove();
+    $('.post-item').eq(0).remove();
   }
 
   $('.add-post-item').on('click', function () {

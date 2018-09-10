@@ -4,7 +4,8 @@ class PostsController < ApplicationController
     # GET /posts
     # GET /posts.json
     def index
-        @posts = Post.all
+        @page = Post.page(params[:page]).per(3)
+        @posts = Post.order(created_at: :desc).page(@page.current_page).per(@page.limit_value)
     end
 
     # GET /posts/1
